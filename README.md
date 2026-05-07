@@ -1,6 +1,5 @@
 <div align="center">
 
-<!-- Replace this with your product hero image or demo GIF -->
 <img src="assets/Relay_Hero_Image.png" alt="Meterless Relay hero image" width="100%" />
 
 <br />
