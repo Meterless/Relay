@@ -1,110 +1,129 @@
-meterless-gaia/README.md
 <div align="center">
 
-<img src="./assets/gaia-hero.png" alt="Meterless Gaia hero image" width="100%" />
+<!-- Replace this with your product hero image or demo GIF -->
+<img src="assets/gaia-hero.png" alt="Meterless Gaia hero image" width="100%" />
+
+<br />
 
 # Meterless Gaia
 
-### The local-first cognitive operating system for real work.
+### The local-first cognitive OS that can see, remember, reason, and act across your computer.
 
-**Most AI tools generate answers. Gaia executes reality.**
+<p>
+  <strong>Most AI tools generate answers. Gaia executes reality.</strong>
+</p>
 
-[Website](https://meterless.ai) · [Docs](./docs) · [Examples](./examples) · [License](./LICENSE.md)
+<p>
+  <a href="#quickstart"><img alt="Quickstart" src="https://img.shields.io/badge/quickstart-run%20locally-111111?style=for-the-badge" /></a>
+  <a href="#architecture"><img alt="Architecture" src="https://img.shields.io/badge/architecture-cognitive%20OS-6D5EF8?style=for-the-badge" /></a>
+  <a href="#local-first-runtime"><img alt="Local First" src="https://img.shields.io/badge/local--first-WebLLM%20%7C%20Ollama%20%7C%20GGUF-0B7285?style=for-the-badge" /></a>
+  <a href="#license"><img alt="License" src="https://img.shields.io/badge/license-see%20LICENSE.md-E5502A?style=for-the-badge" /></a>
+</p>
 
 </div>
 
 ---
 
-## What is Gaia?
+## What Gaia Is
 
-**Meterless Gaia** is a local-first cognitive operating system that can see your environment, reason across what is happening, and act on your computer through a shared native execution layer.
+**Meterless Gaia** is a desktop-native cognitive operating system built for the place where real work actually happens: across apps, browsers, windows, files, tabs, tools, and long-running tasks.
 
-Give it one instruction and it can:
+It is not a chatbot with a few tools attached.
 
-- open apps
-- browse the web
-- read what is on screen
-- click, type, and scroll
-- run long multi-step work
-- remember context across sessions
-- route work across local and cloud models
-- turn outputs into persistent artifacts
+Gaia combines:
 
-Gaia is not a chatbot with desktop tools attached.
+- **Native desktop control**
+- **Screen and browser perception**
+- **Long-horizon reasoning**
+- **H-MEM persistent memory**
+- **12-brain cognitive orchestration**
+- **Shared WorldState**
+- **Local-first model execution**
+- **Universal artifact surfaces**
 
-It is a desktop-native cognitive system built around shared world state, long-horizon reasoning, memory, perception, and native execution.
+The result is an AI system that can move from instruction to execution without handing the work back to you.
 
 ---
 
-## The Problem
+## The Shift
 
 Most AI products still stop too early.
 
-They generate text.  
-Maybe they call an API.  
-Maybe they summarize what you should do next.  
-Then they hand the work back to you.
+```text
+Ask → Answer → Copy → Switch Apps → Do the Work Yourself
+```
 
-That is fine for chat.
+Gaia changes the loop.
 
-It is not enough for reality.
+```text
+Ask → Ground → Reason → Act → Observe → Adapt → Complete
+```
 
-Real work happens across apps, windows, tabs, files, forms, long-running projects, and tasks that drift over time.
-
-**Gaia exists because the intelligence layer should not live inside a chat box. It should live where work actually happens.**
+Give Gaia a real instruction, and it can open apps, browse, read what is on screen, click, type, scroll, use tools, remember context, and continue through multi-step work.
 
 ---
 
 ## The Moment It Clicks
 
-You type:
-
-> “Research how to use Google AI Studio and build a particle simulation.”
+```text
+"Research how to use Google AI Studio and build a particle simulation."
+```
 
 Gaia can:
 
-1. Open your browser through a native control session
+1. Open the browser through a native control session
 2. Ground itself with live browser capture and search
 3. Navigate to AI Studio
 4. Write the right prompt
 5. Generate the simulation
-6. Return the result without you touching the keyboard
+6. Return the result as an artifact
 
-That is the shift.
+That is the difference between an assistant that tells you what to do and an operating system that can actually do it.
 
-**Not just telling you what to do. Actually doing it across the desktop.**
+---
+
+## Core Capabilities
+
+| Capability | What it does | Why it matters |
+|---|---|---|
+| **Desktop Control** | Clicks, types, scrolls, focuses, and navigates real apps | Gaia can operate in the same environment you do |
+| **Observer + Vision** | Reads live screen and browser state | Reasoning is grounded in what is actually visible |
+| **Markovian Thinking** | Compresses state across long tasks | Long workflows do not collapse under context growth |
+| **Project Eywa** | 12 specialized brains across 4 cognitive layers | Gaia behaves like a system, not one frozen prompt |
+| **Shared WorldState** | Keeps tools, brains, artifacts, and windows synchronized | Planning and execution stop drifting apart |
+| **H-MEM** | Preserves context, preferences, constraints, and memories | The system does not restart from zero every session |
+| **Dynamic Enrichment** | Injects browser capture, search, and live context | Actions are tied to evidence, not guesses |
+| **Universal Viewer** | Opens generated artifacts as durable interfaces | Outputs become usable surfaces, not disposable text |
+| **Universal @Mentions** | Pulls files, memories, brains, windows, tools, and modes into a turn | You can steer context and execution precisely |
+| **Local-First Runtime** | Supports WebLLM, Ollama, and embedded GGUF paths | Sensitive workflows can stay on your machine |
 
 ---
 
 ## How Gaia Works
 
+```mermaid
+flowchart TD
+  A[User Input] --> B[Scout Intent Routing]
+  B --> C[Memory + Brain Collection]
+  C --> D[Cortex Task Resolution]
+  D --> E[Provider Readiness Validation]
+  E --> F[Dynamic Enrichment]
+  F --> G[Prompt Composition]
+  G --> H{Execution Route}
+  H --> I[Standard Dispatch]
+  H --> J[Swarm Mode]
+  H --> K[Markovian Engine]
+  H --> L[Desktop Control]
+  I --> M[Response + Artifact]
+  J --> M
+  K --> M
+  L --> M
+  M --> N[Post-Turn H-MEM Observation]
+```
+
+Under the hood, Gaia routes work through services such as:
+
 ```text
-Input
-  ↓
-Preprocessor Routing
-  ↓
-Parallel Memory + Brain Collection
-  ↓
-Cortex Task Resolution
-  ↓
-Provider Readiness Validation
-  ↓
-Dynamic Enrichment
-  ↓
-Prompt Composition
-  ↓
-Desktop Session Target Injection
-  ↓
-Route: Swarm | Auto-Steward | Markovian | Standard Dispatch
-  ↓
-Response + Post-Turn Observation
-
-Gaia is not one model call with a fancy skin.
-
-It is a routed system.
-
-Core services include:
-
 brainPreprocessor
 brainInjectionService
 dynamicEnrichmentService
@@ -112,290 +131,166 @@ promptComposerService
 modelOrchestrator
 desktopAutomationService
 post-turn H-MEM observation
-Why Gaia Is Different
-1. Gaia Can Actually Use Your Computer
+```
 
-Gaia controls desktop apps through a session-based desktop model.
+This is not one model call with a fancy skin. It is a routed operating system.
 
-Once a session is started, the active target window is cached and injected into the reasoning path. Gaia can execute typed desktop actions such as:
+---
 
-focus
-click
-type
-keys
-scroll
-move
-bounds
+## Project Eywa: The 12-Brain Cognitive Stack
 
-This same execution layer is reused by chat, missions, tools, desktop control, and routed desktop work.
+Gaia’s cognitive system is organized across four layers:
 
-2. Gaia Sees What Is Happening
+| Layer | Purpose |
+|---|---|
+| **Perception** | Observe the environment, screen, browser, artifacts, and signals |
+| **Intelligence** | Interpret patterns, classify intent, reason, and plan |
+| **Autonomy** | Shape goals, recover from drift, coordinate long tasks |
+| **Execution** | Generate artifacts, take actions, write outputs, and complete work |
 
-Gaia folds screen perception into its reasoning path through Observer mode, local vision, browser grounding, and dynamic enrichment.
+Brains such as **Scout, Sentinel, Oracle, Weaver, Commander, Healer, Miner, Forge, Runtime, and Scribe** coordinate through ORAE loops:
 
-It can reason from:
-
-live browser capture
-recent page captures
-screen state
-local vision models
-bookmarks and history
-search evidence
-active windows
-workspace artifacts
-
-This means Gaia does not only respond to what you typed.
-
-It can ground itself in what is actually visible.
-
-3. Gaia Does Not Collapse on Long Tasks
-
-Long tasks usually break AI systems.
-
-The prompt grows.
-Context decays.
-The original goal fades.
-The system loses the thread.
-
-Gaia uses a Markovian Thinking Engine to carry compressed state across long reasoning runs instead of blindly resending the entire conversation history.
-
-That lets Gaia keep working across long horizons without collapsing under context growth.
-
-4. Gaia Runs Like a System, Not a Prompt
-
-Gaia’s cognitive model is built around Project Eywa, a 12-brain architecture split across four layers:
-
-Layer	Role
-Perception	Gather signals from the environment
-Intelligence	Interpret patterns and reason
-Autonomy	Shape goals, recover, and adapt
-Execution	Produce artifacts and actions
-
-Brains coordinate through ORAE loops:
-
+```text
 Observe → Reason → Act → Evaluate
+```
 
-This is how Gaia can adapt mid-task instead of acting like a single frozen assistant call.
+---
 
-5. Gaia Operates on Shared WorldState
+## Local-First Runtime
 
-Every brain, tool, and interface reads and writes to a shared live WorldState.
+Gaia is designed for workflows where privacy and control matter.
 
-That world state can track:
+Supported local and edge paths include:
 
-open windows
-active artifacts
-user goals
-environmental signals
-tool registries
-memory
-current workspace context
+- **WebLLM** for browser/WebView inference
+- **Ollama** for desktop-local providers
+- **Embedded GGUF sidecar runtime**
+- **Local vision paths** with Transformers.js and ONNX
+- **Tauri desktop command surfaces**
 
-The planner and executor are not working from different realities.
+Cloud providers can still be used when you want them, but Gaia is not architected around forced cloud dependency.
 
-They share the same ground truth.
+---
 
-6. Gaia Remembers
+## Use Cases
 
-Gaia uses a 3-tier H-MEM system so it does not start every session as a blank slate.
+### Cross-App Workflow Automation
 
-It can preserve:
+Research a topic in the browser, update a spreadsheet, draft an email, and save the result without manually switching between tools.
 
-user context
-constraints
-preferences
-prior decisions
-project memory
-contradictions
-reusable patterns
+### Learn a Tool, Then Use It
 
-The result feels less like a stateless assistant and more like an evolving operating system.
+Ask Gaia to research how a product works, then operate that product on your behalf.
 
-7. Gaia Can Run Locally
+### AI Tool Orchestration
 
-Gaia supports multiple local-first execution paths:
+Use other AI systems as tools: ask Gaia to prompt external AI products, retrieve outputs, and combine them into one workspace.
 
-WebLLM
-Ollama
-local vision models
-embedded GGUF sidecar runtime
-local workspace files
-native Tauri storage
+### Multi-Day Knowledge Work
 
-Sensitive workflows can stay on your machine when needed.
+Carry context across research, architecture reviews, due diligence, writing, and strategic analysis without starting from zero every day.
 
-Feature Snapshot
-Capability	What it does	Why it matters
-Native Desktop Control	Acts on real apps through typed desktop actions	Gaia can do work, not just describe it
-Observer + Vision	Reads screen and browser state	Reasoning stays grounded in visible evidence
-Markovian Engine	Carries compressed state across long tasks	Long workflows do not collapse
-Project Eywa	Coordinates 12 specialized brains	Gaia behaves like a system, not a single prompt
-Shared WorldState	Keeps brains, tools, and interfaces aligned	Planning and execution stop drifting apart
-H-MEM	Preserves memory across sessions	Gaia does not restart from zero
-Dynamic Enrichment	Injects live search, browser state, and capture	Responses are tied to current evidence
-Universal Viewer	Hosts generated artifacts in durable interfaces	Outputs become usable surfaces
-Universal @Mentions	Pulls files, tools, windows, brains, and modes into a turn	Context and execution can be steered precisely
-Local-First Runtime	Supports WebLLM, Ollama, and embedded GGUF	Sensitive work can stay local
-What You Can Do With Gaia
-Manage email and daily desktop workflows
-Run research-to-execution pipelines
-Automate repetitive app-based tasks
-Complete long multi-step work without losing the thread
-Build and test outputs across browser, code, and desktop tools
-Ground decisions in live browser and screen evidence
-Steer the system through modes like @Control, @Swarm, @Research, and @Explorer
-Run local workflows for sensitive data
-Example Use Cases
-Cross-Application Workflow Automation
+### Sensitive Local Workflows
 
-A recruiter can ask Gaia to pull a job description from an ATS, research salary benchmarks, update a spreadsheet, and draft outreach emails while remembering the company’s compensation philosophy.
+Analyze proprietary code, legal documents, financial models, or HR data with local inference paths where possible.
 
-Learn a Tool, Then Use It
+---
 
-Ask Gaia to research how to set up a campaign in Google Ads, learn the flow, then operate the interface using your parameters.
+## Architecture
 
-AI Tool Orchestration
+| Layer | Stack |
+|---|---|
+| Frontend | React 19, TypeScript, Vite |
+| Desktop Shell | Tauri 2 + Rust |
+| Embedded Runtime | Axum, Tokio, llama-cpp-compatible GGUF sidecar |
+| Persistence | IndexedDB, Tauri JSON storage, workspace files |
+| Providers | Google, Anthropic, OpenAI, Groq, Mistral, WebLLM, Ollama, embedded GGUF |
+| Shared Services | Brains, H-MEM, context registry, enrichment, prompt composition, missions, workspace services, desktop automation |
 
-Gaia can coordinate between AI tools, such as using one product for images, another for copy, and another for layout, then combine the results in a workspace.
+---
 
-Multi-Day Project Continuity
+## Quickstart
 
-Gaia can support architecture reviews, research projects, competitive analysis, and thesis writing that span multiple sessions.
-
-Local-First Sensitive Work
-
-Legal documents, medical records, financial models, HR data, and proprietary code can be processed through local-first paths when cloud use is not appropriate.
-
-Architecture
-React + TypeScript + Vite
-        ↓
-Tauri Desktop Shell
-        ↓
-Shared WorldState
-        ↓
-12-Brain Cognitive Stack
-        ↓
-H-MEM + Markovian Reasoning
-        ↓
-Model Orchestrator
-        ↓
-Desktop Automation + Browser Grounding
-        ↓
-Universal Viewer + Workspace Artifacts
-
-Core runtime layers:
-
-Layer	Stack
-Frontend	React 19, TypeScript, Vite
-Desktop Shell	Tauri 2 + Rust
-Embedded Runtime	Axum, Tokio, llama-cpp
-Persistence	IndexedDB, Tauri JSON storage, workspace files
-Providers	Google, Anthropic, OpenAI, Groq, Mistral, WebLLM, Ollama, GGUF
-Cognitive Services	Brains, H-MEM, context registry, enrichment, prompt composition, mission orchestration
-Quickstart
+```bash
 git clone https://github.com/meterless-ai/meterless-gaia.git
 cd meterless-gaia
 npm install
 npm run tauri:dev
-Requirements
-Node 18+
-Rust 1.77+
-Tauri toolchain
-Windows or macOS desktop environment recommended for full native experience
+```
 
-Browser mode is useful for UI iteration.
-Tauri desktop mode unlocks native storage, workspace files, shell integration, backup, and desktop automation.
+### Requirements
 
-Suggested First Run
+- Node 18+
+- Rust 1.77+
+- Tauri toolchain
+- Desktop mode for native execution features
 
-Try:
+Browser mode can support UI iteration, but the full Gaia experience runs through the desktop shell.
 
-Check my unread emails and draft replies for me to review.
+---
 
-The intended flow:
+## Suggested Screenshots
 
-Launch Gaia
-  ↓
-Give it one real instruction
-  ↓
-Let it ground itself
-  ↓
-Let it reason and act
-  ↓
-Review before sensitive actions
-How Gaia Fits the Meterless Stack
-Gaia = The Mind
-Swarms = The Workforce
-Relay = The Hands
+Add these to your repo under `/assets`:
 
-Use Gaia when you want:
+```text
+assets/gaia-hero.png
+assets/gaia-worldstate.png
+assets/gaia-desktop-control.gif
+assets/gaia-universal-viewer.png
+assets/gaia-memory.png
+```
 
-broader autonomous reasoning
-long-horizon intelligence
-memory and continuity
-environment awareness
-desktop-native action
+Then replace the hero image at the top of this README.
 
-Use Swarms when you want:
+---
 
-parallel agents
-many variants
-DAG planning
-merge and verification
+## How Gaia Fits With Meterless
 
-Use Relay when you want:
+```text
+Gaia decides what to do.
+Swarms thinks in parallel.
+Relay executes in reality.
+```
 
-reliable desktop execution
-tracked windows
-vision-verified workflows
-reusable automation plans
-FAQ
-Is Gaia just a chatbot with tools?
+Use **Gaia** when you want the higher-level cognitive operating system.
 
-No. Gaia is built around shared WorldState, a routed turn pipeline, a 12-brain cognitive stack, H-MEM memory, Markovian long-horizon reasoning, native desktop control, and persistent artifact surfaces.
+Use **Swarms** when you want parallel multi-agent thinking, generation, merge, and verification.
 
-Can Gaia control desktop apps?
+Use **Relay** when you need grounded desktop execution that survives real-world UI drift.
 
-Yes. In Tauri mode, Gaia uses a session-based desktop model and typed desktop action facade for focus, click, type, keys, scroll, move, and bounds.
+---
 
-What keeps Gaia from losing track on long tasks?
+## FAQ
 
-The Markovian engine carries forward compressed state instead of growing the prompt forever. Silent Observer helps detect semantic drift while tasks are underway.
+### Is Gaia just a chatbot with desktop tools?
 
-Does Gaia work offline?
+No. Gaia is built around shared WorldState, routed cognition, 12-brain orchestration, H-MEM, Markovian long-horizon reasoning, native desktop control, and artifact surfaces.
 
-Gaia supports local-first paths including WebLLM, Ollama, local vision, and embedded GGUF inference. Not every workflow is offline-only, but the architecture supports sensitive local execution.
+### Can it actually control desktop apps?
 
-Is Gaia one provider under the hood?
+Yes. In Tauri desktop mode, Gaia uses session-based desktop control and typed actions such as focus, click, type, keys, scroll, move, and bounds.
 
-No. Gaia routes across cloud and local providers through a model orchestrator.
+### What keeps Gaia from losing track on long tasks?
 
-The Takeaway
+The Markovian engine carries compressed state forward instead of blindly growing the prompt forever. Silent Observer helps detect semantic drift while work is underway.
+
+### Does Gaia work offline?
+
+Parts of Gaia can run locally through WebLLM, Ollama, local vision, and embedded GGUF runtime paths. Cloud features are optional depending on provider configuration and task needs.
+
+---
+
+## The Takeaway
 
 Most AI tools answer.
 
-Gaia can answer, see, remember, route, ground itself, and act.
+**Gaia can answer, see, remember, route, ground itself, and act.**
 
-That is the shift.
+It turns the assistant from something you talk to into something that can operate in the same reality you do.
 
-Meterless Gaia turns the assistant from something you talk to into something that can operate in the same reality you do.
+---
 
-Image Slots
+## License
 
-Add these images to /assets when ready:
-
-/assets/gaia-hero.png
-/assets/gaia-worldstate.png
-/assets/gaia-12-brains.png
-/assets/gaia-desktop-control.png
-/assets/gaia-universal-viewer.png
-
-Recommended sections:
-
-![Gaia WorldState](./assets/gaia-worldstate.png)
-![Gaia 12-Brain Architecture](./assets/gaia-12-brains.png)
-![Gaia Desktop Control](./assets/gaia-desktop-control.png)
-License
-
-See LICENSE.md
-.
+See [`LICENSE.md`](LICENSE.md).
