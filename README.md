@@ -1,22 +1,22 @@
 <div align="center">
 
 <!-- Replace this with your product hero image or demo GIF -->
-<img src="assets/gaia-hero.png" alt="Meterless Gaia hero image" width="100%" />
+<img src="assets/relay-hero.png" alt="Meterless Relay hero image" width="100%" />
 
 <br />
 
-# Meterless Gaia
+# Meterless Relay
 
-### The local-first cognitive OS that can see, remember, reason, and act across your computer.
+### Natural-language desktop automation for real OS windows.
 
 <p>
-  <strong>Most AI tools generate answers. Gaia executes reality.</strong>
+  <strong>Turn instructions into real desktop workflows.</strong>
 </p>
 
 <p>
-  <a href="#quickstart"><img alt="Quickstart" src="https://img.shields.io/badge/quickstart-run%20locally-111111?style=for-the-badge" /></a>
-  <a href="#architecture"><img alt="Architecture" src="https://img.shields.io/badge/architecture-cognitive%20OS-6D5EF8?style=for-the-badge" /></a>
-  <a href="#local-first-runtime"><img alt="Local First" src="https://img.shields.io/badge/local--first-WebLLM%20%7C%20Ollama%20%7C%20GGUF-0B7285?style=for-the-badge" /></a>
+  <a href="#quickstart"><img alt="Quickstart" src="https://img.shields.io/badge/quickstart-tauri%20dev-111111?style=for-the-badge" /></a>
+  <a href="#tracked-windows"><img alt="Tracked Windows" src="https://img.shields.io/badge/tracked%20windows-8%20sessions-6D5EF8?style=for-the-badge" /></a>
+  <a href="#vision-verification"><img alt="Vision Verification" src="https://img.shields.io/badge/vision-verified-0B7285?style=for-the-badge" /></a>
   <a href="#license"><img alt="License" src="https://img.shields.io/badge/license-see%20LICENSE.md-E5502A?style=for-the-badge" /></a>
 </p>
 
@@ -24,61 +24,67 @@
 
 ---
 
-## What Gaia Is
+## What Relay Is
 
-**Meterless Gaia** is a desktop-native cognitive operating system built for the place where real work actually happens: across apps, browsers, windows, files, tabs, tools, and long-running tasks.
+**Meterless Relay** is a Tauri + Rust desktop automation engine that takes a natural-language goal, compiles it into a schema-validated mission plan, executes that plan across real desktop windows, verifies critical steps with vision, and saves outputs as reusable artifacts.
 
-It is not a chatbot with a few tools attached.
+Relay is built for the part of automation most tools still fail at:
 
-Gaia combines:
-
-- **Native desktop control**
-- **Screen and browser perception**
-- **Long-horizon reasoning**
-- **H-MEM persistent memory**
-- **12-brain cognitive orchestration**
-- **Shared WorldState**
-- **Local-first model execution**
-- **Universal artifact surfaces**
-
-The result is an AI system that can move from instruction to execution without handing the work back to you.
+**the messy, shifting reality of the actual desktop.**
 
 ---
 
-## The Shift
+## The Problem
 
-Most AI products still stop too early.
+Most desktop automation breaks for boring reasons.
+
+- Windows get matched by fuzzy titles
+- Focus changes
+- Z-order changes
+- Handles drift after app restarts
+- Tiny UI changes cause silent failures
+- Scripts assume the world has not moved
+
+That is why so much automation feels impressive in a demo and fragile in real work.
+
+Relay fixes the root problem by grounding automation in the real desktop state before it acts.
+
+---
+
+## The Relay Loop
 
 ```text
-Ask → Answer → Copy → Switch Apps → Do the Work Yourself
+Describe the goal
+→ Inspect the plan
+→ Run with grounded execution
+→ Verify critical steps
+→ Capture reusable outputs
 ```
 
-Gaia changes the loop.
+This is not “AI trying stuff.”
 
-```text
-Ask → Ground → Reason → Act → Observe → Adapt → Complete
-```
-
-Give Gaia a real instruction, and it can open apps, browse, read what is on screen, click, type, scroll, use tools, remember context, and continue through multi-step work.
+It is a desktop workflow engine that knows what machine it is operating on.
 
 ---
 
 ## The Moment It Clicks
 
 ```text
-"Research how to use Google AI Studio and build a particle simulation."
+"Log into my trading platform, check positions, and export today’s report."
 ```
 
-Gaia can:
+Relay does not jump straight into blind clicking.
 
-1. Open the browser through a native control session
-2. Ground itself with live browser capture and search
-3. Navigate to AI Studio
-4. Write the right prompt
-5. Generate the simulation
-6. Return the result as an artifact
+It can:
 
-That is the difference between an assistant that tells you what to do and an operating system that can actually do it.
+1. Research the goal when appropriate
+2. Build a live desktop context snapshot
+3. Compile a structured `MultiWindowMissionPlan`
+4. Let you inspect the plan
+5. Resolve tracked windows by stable IDs
+6. Execute through native Windows APIs
+7. Verify critical screens with vision
+8. Save outputs into a workspace artifact store
 
 ---
 
@@ -86,113 +92,92 @@ That is the difference between an assistant that tells you what to do and an ope
 
 | Capability | What it does | Why it matters |
 |---|---|---|
-| **Desktop Control** | Clicks, types, scrolls, focuses, and navigates real apps | Gaia can operate in the same environment you do |
-| **Observer + Vision** | Reads live screen and browser state | Reasoning is grounded in what is actually visible |
-| **Markovian Thinking** | Compresses state across long tasks | Long workflows do not collapse under context growth |
-| **Project Eywa** | 12 specialized brains across 4 cognitive layers | Gaia behaves like a system, not one frozen prompt |
-| **Shared WorldState** | Keeps tools, brains, artifacts, and windows synchronized | Planning and execution stop drifting apart |
-| **H-MEM** | Preserves context, preferences, constraints, and memories | The system does not restart from zero every session |
-| **Dynamic Enrichment** | Injects browser capture, search, and live context | Actions are tied to evidence, not guesses |
-| **Universal Viewer** | Opens generated artifacts as durable interfaces | Outputs become usable surfaces, not disposable text |
-| **Universal @Mentions** | Pulls files, memories, brains, windows, tools, and modes into a turn | You can steer context and execution precisely |
-| **Local-First Runtime** | Supports WebLLM, Ollama, and embedded GGUF paths | Sensitive workflows can stay on your machine |
+| **Tracked Windows** | Uses stable window IDs across up to 8 tracked sessions | Automation stays grounded in real desktop identity |
+| **Mission Compiler** | Turns goals into `MultiWindowMissionPlan` JSON | Workflows are structured before execution |
+| **Brain Injection** | Injects desktop state, Z-order, tools, and procedural memory | Plans reflect the live machine, not a guess |
+| **JSON Repair Pipeline** | Repairs malformed model output before execution | One bad JSON response does not kill the mission |
+| **Self-Healing Run Prep** | Refreshes and remaps window IDs before execution | Missions survive app restarts and drift |
+| **Native Win32 Execution** | Focuses, clicks, types, scrolls, and navigates through Rust + Windows APIs | Actions are more reliable than browser-layer hacks |
+| **Vision Verification** | Compares expected screen state to actual screen state | Critical steps can be checked before continuing |
+| **Approval Gates** | Pauses for human sign-off on sensitive work | Users stay in control when stakes are high |
+| **Procedural Memory** | Recalls repeatable habits by app and task type | Daily workflows become faster to rerun |
+| **Workspace Artifacts** | Saves extracted outputs from completed phases | Results persist instead of disappearing |
 
 ---
 
-## How Gaia Works
+## How Relay Works
 
 ```mermaid
 flowchart TD
-  A[User Input] --> B[Scout Intent Routing]
-  B --> C[Memory + Brain Collection]
-  C --> D[Cortex Task Resolution]
-  D --> E[Provider Readiness Validation]
-  E --> F[Dynamic Enrichment]
-  F --> G[Prompt Composition]
-  G --> H{Execution Route}
-  H --> I[Standard Dispatch]
-  H --> J[Swarm Mode]
-  H --> K[Markovian Engine]
-  H --> L[Desktop Control]
-  I --> M[Response + Artifact]
-  J --> M
-  K --> M
-  L --> M
-  M --> N[Post-Turn H-MEM Observation]
+  A[Goal] --> B[Research]
+  B --> C[Brain Injection]
+  C --> D[Mission Plan]
+  D --> E[JSON Repair]
+  E --> F[Prepare Window IDs]
+  F --> G[Execute]
+  G --> H[Vision Verify]
+  H --> I[Capture Outputs]
+  I --> J[Complete]
 ```
 
-Under the hood, Gaia routes work through services such as:
+Key services include:
 
 ```text
-brainPreprocessor
+missionPlanCompiler
 brainInjectionService
-dynamicEnrichmentService
-promptComposerService
-modelOrchestrator
+desktopStateInjector
+parseLlmJson
+preparePlanWindowIdsForExecution
 desktopAutomationService
-post-turn H-MEM observation
+screenVerificationService
+outputCaptureService
 ```
 
-This is not one model call with a fancy skin. It is a routed operating system.
+Relay is not one giant black box. You can point to the pipeline.
 
 ---
 
-## Project Eywa: The 12-Brain Cognitive Stack
+## Tracked Windows
 
-Gaia’s cognitive system is organized across four layers:
+Relay does not treat windows as fuzzy strings.
 
-| Layer | Purpose |
-|---|---|
-| **Perception** | Observe the environment, screen, browser, artifacts, and signals |
-| **Intelligence** | Interpret patterns, classify intent, reason, and plan |
-| **Autonomy** | Shape goals, recover from drift, coordinate long tasks |
-| **Execution** | Generate artifacts, take actions, write outputs, and complete work |
+It uses a **Tracked Windows** model where up to 8 concurrent native OS windows are managed as first-class `ControlSession` entries. Each has a durable window ID that the planner, workflow engine, brain injection pipeline, and vision verification system all reference as shared ground truth.
 
-Brains such as **Scout, Sentinel, Oracle, Weaver, Commander, Healer, Miner, Forge, Runtime, and Scribe** coordinate through ORAE loops:
+Screen-capture surfaces like `win_*` can mirror real native OS handles like `native_*`, so preview video, real input injection, and vision checks all resolve to the same underlying window.
 
-```text
-Observe → Reason → Act → Evaluate
-```
+That is the difference between hoping title matching still works tomorrow and building automation on a stable desktop substrate.
 
 ---
 
-## Local-First Runtime
+## Vision Verification
 
-Gaia is designed for workflows where privacy and control matter.
+Relay does not assume the click worked.
 
-Supported local and edge paths include:
+It can capture PNG frames from tracked sessions and route them through a vision model for structured expected-vs-actual checks.
 
-- **WebLLM** for browser/WebView inference
-- **Ollama** for desktop-local providers
-- **Embedded GGUF sidecar runtime**
-- **Local vision paths** with Transformers.js and ONNX
-- **Tauri desktop command surfaces**
+This enables:
 
-Cloud providers can still be used when you want them, but Gaia is not architected around forced cloud dependency.
+- Critical screen validation
+- Visual extraction
+- Auditable phase captures
+- Safer high-stakes workflows
+- Better recovery when UI state drifts
 
 ---
 
-## Use Cases
+## Self-Healing Execution
 
-### Cross-App Workflow Automation
+Automations break when a plan was compiled before a window moved, closed, reopened, or changed identity.
 
-Research a topic in the browser, update a spreadsheet, draft an email, and save the result without manually switching between tools.
+Relay prepares plans before execution by:
 
-### Learn a Tool, Then Use It
+- Refreshing live native windows
+- Remapping stale window IDs
+- Collapsing IDs when one session is tracked
+- Upgrading input steps to prefer `native_*` handles
+- Resolving current desktop reality before taking action
 
-Ask Gaia to research how a product works, then operate that product on your behalf.
-
-### AI Tool Orchestration
-
-Use other AI systems as tools: ask Gaia to prompt external AI products, retrieve outputs, and combine them into one workspace.
-
-### Multi-Day Knowledge Work
-
-Carry context across research, architecture reviews, due diligence, writing, and strategic analysis without starting from zero every day.
-
-### Sensitive Local Workflows
-
-Analyze proprietary code, legal documents, financial models, or HR data with local inference paths where possible.
+A mission compiled yesterday has a real chance of running cleanly today.
 
 ---
 
@@ -200,20 +185,67 @@ Analyze proprietary code, legal documents, financial models, or HR data with loc
 
 | Layer | Stack |
 |---|---|
-| Frontend | React 19, TypeScript, Vite |
-| Desktop Shell | Tauri 2 + Rust |
-| Embedded Runtime | Axum, Tokio, llama-cpp-compatible GGUF sidecar |
-| Persistence | IndexedDB, Tauri JSON storage, workspace files |
-| Providers | Google, Anthropic, OpenAI, Groq, Mistral, WebLLM, Ollama, embedded GGUF |
-| Shared Services | Brains, H-MEM, context registry, enrichment, prompt composition, missions, workspace services, desktop automation |
+| Shell | Tauri 2 + Rust |
+| UI | React 19, TypeScript, Tailwind, Vite |
+| Planner Path | `missionPlanCompiler → brainInjectionService → llmService` |
+| Execution Path | `workflowEngine → desktopAutomationService → Tauri IPC → Rust` |
+| Verification Path | `screenVerificationService → outputCaptureService` |
+| Persistence | Tauri Store, localStorage compatibility |
+| Native Layer | Windows APIs, `windows`, `sysinfo`, `enigo` |
+| Plugins | `tauri-plugin-shell`, `tauri-plugin-store` |
+
+---
+
+## Workflow State Machine
+
+```mermaid
+stateDiagram-v2
+  [*] --> idle
+  idle --> running
+  running --> paused
+  running --> approval_needed
+  approval_needed --> running
+  paused --> running
+  running --> completed
+  running --> failed
+  completed --> [*]
+  failed --> [*]
+```
+
+Steps can carry failure policies such as:
+
+- `continue`
+- `retry`
+- `halt`
+- `approval_needed`
+
+---
+
+## Example Workflows
+
+### Daily Reporting
+
+Open a desktop platform, collect the day’s output, export the report, and save the extracted result as a workspace artifact.
+
+### Procedure Replay
+
+Perform a routine once, let Relay accumulate the habit in procedural memory, then rerun similar tasks without restating the full sequence.
+
+### High-Stakes Approvals
+
+Compile a mission that reaches a sensitive action, pause for approval, inspect the plan and screen, then sign off before continuing.
+
+### Multi-Window Desktop Work
+
+Track several native windows and run a workflow across them without relying on fragile title matching.
 
 ---
 
 ## Quickstart
 
 ```bash
-git clone https://github.com/meterless-ai/meterless-gaia.git
-cd meterless-gaia
+git clone https://github.com/meterless-ai/meterless-relay.git
+cd meterless-relay
 npm install
 npm run tauri:dev
 ```
@@ -221,11 +253,11 @@ npm run tauri:dev
 ### Requirements
 
 - Node 18+
-- Rust 1.77+
+- Rust
 - Tauri toolchain
-- Desktop mode for native execution features
+- Windows for native automation
 
-Browser mode can support UI iteration, but the full Gaia experience runs through the desktop shell.
+Relay’s native automation layer is Windows-first. Browser-only development is useful for UI iteration, but native window listing and IPC-driven automation require Tauri desktop mode.
 
 ---
 
@@ -234,18 +266,18 @@ Browser mode can support UI iteration, but the full Gaia experience runs through
 Add these to your repo under `/assets`:
 
 ```text
-assets/gaia-hero.png
-assets/gaia-worldstate.png
-assets/gaia-desktop-control.gif
-assets/gaia-universal-viewer.png
-assets/gaia-memory.png
+assets/relay-hero.png
+assets/relay-tracked-windows.png
+assets/relay-mission-plan.png
+assets/relay-vision-verification.gif
+assets/relay-artifacts.png
 ```
 
 Then replace the hero image at the top of this README.
 
 ---
 
-## How Gaia Fits With Meterless
+## How Relay Fits With Meterless
 
 ```text
 Gaia decides what to do.
@@ -253,41 +285,52 @@ Swarms thinks in parallel.
 Relay executes in reality.
 ```
 
-Use **Gaia** when you want the higher-level cognitive operating system.
+Use **Relay** when you need reliable real-world execution.
 
-Use **Swarms** when you want parallel multi-agent thinking, generation, merge, and verification.
+Use **Gaia** when you want broader autonomous intelligence and exploration.
 
-Use **Relay** when you need grounded desktop execution that survives real-world UI drift.
+Use **Swarms** when you need parallel planning, generation, merge, and verification.
 
 ---
 
 ## FAQ
 
-### Is Gaia just a chatbot with desktop tools?
+### Is Relay just macro recording with AI on top?
 
-No. Gaia is built around shared WorldState, routed cognition, 12-brain orchestration, H-MEM, Markovian long-horizon reasoning, native desktop control, and artifact surfaces.
+No. Relay is a workflow compiler and executor. Recording and replay can be part of the system, but the core architecture is goal, research, brain injection, schema-validated planning, self-healed execution, visual verification, and artifact capture.
 
-### Can it actually control desktop apps?
+### Does Relay depend on fuzzy window title matching?
 
-Yes. In Tauri desktop mode, Gaia uses session-based desktop control and typed actions such as focus, click, type, keys, scroll, move, and bounds.
+No. Relay is built around tracked window IDs and mirrored native/capture session linking.
 
-### What keeps Gaia from losing track on long tasks?
+### What happens if the model returns broken JSON?
 
-The Markovian engine carries compressed state forward instead of blindly growing the prompt forever. Silent Observer helps detect semantic drift while work is underway.
+Relay runs planner output through a repair pipeline that strips fences, repairs malformed JSON, normalizes IDs, and fills defaults.
 
-### Does Gaia work offline?
+### Can it verify what happened on screen?
 
-Parts of Gaia can run locally through WebLLM, Ollama, local vision, and embedded GGUF runtime paths. Cloud features are optional depending on provider configuration and task needs.
+Yes. Relay can capture PNG frames from tracked sessions and route them through a vision model for expected-vs-actual checks and structured extraction.
 
 ---
 
 ## The Takeaway
 
-Most AI tools answer.
+Desktop automation used to mean:
 
-**Gaia can answer, see, remember, route, ground itself, and act.**
+```text
+Write scripts and hope they do not break.
+```
 
-It turns the assistant from something you talk to into something that can operate in the same reality you do.
+Meterless Relay changes the model:
+
+```text
+Describe the goal.
+Inspect the plan.
+Run with grounded execution and verification.
+Reuse what works.
+```
+
+Relay is window-aware, state-aware, repair-tolerant, vision-verified, and reusable the moment a workflow succeeds.
 
 ---
 
