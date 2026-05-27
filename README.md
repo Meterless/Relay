@@ -242,11 +242,35 @@ Track several native windows and run a workflow across them without relying on f
 
 ## Quickstart
 
+### Desktop (Windows)
+
+Grab the latest installer from the releases page, either the `.msi` or the NSIS `.exe`, and install. The app launches on its own and stores local app data under `%APPDATA%\MeterlessGaia`.
+
+### Local dev
+
 ```bash
-git clone https://github.com/meterless-ai/meterless-relay.git
-cd meterless-relay
+git clone https://github.com/meterless-ai/meterless-gaia.git
+cd meterless-gaia
 npm install
+npm run dev
+```
+
+To run the Tauri desktop app locally:
+
+```bash
 npm run tauri:dev
+```
+
+To build the Tauri installers locally:
+
+```bash
+npm run tauri:build
+```
+
+To build just the web bundle:
+
+```bash
+npm run build
 ```
 
 ### Requirements
