@@ -23,6 +23,9 @@
 
 ---
 
+<img width="2560" height="1409" alt="Relay" src="https://github.com/user-attachments/assets/15f1fedc-a72c-44c8-ae17-244f4d400873" />
+
+
 ## What Relay Is
 
 **Meterless Relay** is a Tauri + Rust desktop automation engine that takes a natural-language goal, compiles it into a schema-validated mission plan, executes that plan across real desktop windows, verifies critical steps with vision, and saves outputs as reusable artifacts.
@@ -104,6 +107,9 @@ The web bundle in `dist/` uses relative asset paths so it can deploy to any stat
 ---
 
 ## The Moment It Clicks
+
+<img width="2552" height="1411" alt="RelayV2" src="https://github.com/user-attachments/assets/5a7a5d3d-63f1-4dbe-8ec9-5a1ab6878e18" />
+
 
 ```text
 "Log into my trading platform, check positions, and export today’s report."
