@@ -8,9 +8,6 @@
   <strong>Type one sentence. Relay plans it across the Windows apps you already use, checks every step, and waits for you before anything you can't take back.</strong>
 </p>
 
-<img src="assets/clips/relay-hero.gif" alt="Relay turns one sentence into a five-phase plan, runs it across a vendor portal, File Explorer, a spreadsheet, and mail, stops for approval before sending, then finishes with 17 verified steps" width="100%" />
-
-<br />
 
 
 <p>
@@ -22,6 +19,10 @@
 </p>
 
 <p><a href="https://meterless.ai/relay.html"><b>meterless.ai/relay</b></a> · <a href="docs/getting-started.md">Getting started</a> · <a href="docs/features.md">Features</a> · <a href="docs/agent-bridge.md">Agent bridge</a> · <a href="docs/faq.md">FAQ</a> · <a href="CHANGELOG.md">Changelog</a></p>
+
+<img src="assets/clips/relay-hero.gif" alt="Relay turns one sentence into a five-phase plan, runs it across a vendor portal, File Explorer, a spreadsheet, and mail, stops for approval before sending, then finishes with 17 verified steps" width="100%" />
+
+<br />
 
 </div>
 
