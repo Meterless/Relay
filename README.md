@@ -1,9 +1,5 @@
 <div align="center">
 
-<img src="assets/clips/relay-hero.gif" alt="Relay turns one sentence into a five-phase plan, runs it across a vendor portal, File Explorer, a spreadsheet, and mail, stops for approval before sending, then finishes with 17 verified steps" width="100%" />
-
-<br />
-
 # Meterless Relay
 
 ### Describe the job. Watch it get done.
@@ -11,6 +7,11 @@
 <p>
   <strong>Type one sentence. Relay plans it across the Windows apps you already use, checks every step, and waits for you before anything you can't take back.</strong>
 </p>
+
+<img src="assets/clips/relay-hero.gif" alt="Relay turns one sentence into a five-phase plan, runs it across a vendor portal, File Explorer, a spreadsheet, and mail, stops for approval before sending, then finishes with 17 verified steps" width="100%" />
+
+<br />
+
 
 <p>
   <a href="https://meterless.ai/Installers/meterless-relay-latest.exe"><img alt="Download for Windows" src="https://img.shields.io/badge/download-windows%2010%20%2F%2011-0D8048?style=for-the-badge" /></a>
