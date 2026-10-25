@@ -1,110 +1,180 @@
 # Troubleshooting
 
-If something broke, start here. Most of the common stuff has a fix that takes under a minute. The list is roughly ordered from most-common to less-common.
+If something broke, start here. Most fixes take under a minute.
 
-## The app takes forever to open the first time
+**Two places to look first:**
 
-Normal. The first launch can take anywhere from thirty seconds to a couple of minutes, depending on your machine. Relay is unpacking its model cache, setting up local storage, and registering with Windows. After the first launch, it opens in two or three seconds.
+- **Settings → System Logs** shows recent errors, warnings and app events. It keeps the last 500. **Copy all** puts them on your clipboard so you can paste them into a bug report.
+- **Run results**, under the plan, gives every step a verdict. On a failed run, **Explain this failure** tells you which step broke and why.
 
-If you've waited more than five minutes on the first launch and nothing has happened, see "The app won't open at all" further down.
+---
 
-## Windows SmartScreen warned that the installer is unrecognized
+## Installing and launching
 
-Click **More info**, then **Run anyway**. Our installer is signed, but SmartScreen builds reputation over time, and new releases sometimes haven't accumulated enough of it yet. The signature is valid. You can verify it by right-clicking the installer, going to **Properties → Digital Signatures**, and confirming the publisher name. *(confirm before publishing)*
+### Windows SmartScreen says the installer is unrecognized
 
-If your antivirus quarantined the installer outright, see the next item.
+Click **More info**, then **Run anyway**. The installer doesn't have a Windows code-signing certificate yet, so SmartScreen warns about it. Updates installed from inside Relay are different: Relay checks their signature before installing them.
 
-## Antivirus flagged Relay as suspicious
+### Antivirus flagged Relay
 
-A few antivirus tools mistake Relay's input injection code for malware because the same Windows APIs that drive automation are also what some malware uses. The fix is to add an exception:
+Relay sends real mouse and keyboard input and reads other apps through UI Automation. Some antivirus tools treat that as suspicious. If yours quarantined it, add an exception for the install folder, `%LOCALAPPDATA%\Meterless Relay\`, then reinstall.
 
-1. Open your antivirus settings.
-2. Find the exclusions or allowlist section.
-3. Add the Relay install folder (usually `C:\Program Files\Meterless Relay\`) and the executable inside it.
-4. Reinstall Relay if the installer was quarantined and deleted.
+### The app won't open
 
-This is annoying and we know it. The signed installer reduces how often this happens, but doesn't eliminate it.
+Work through these in order:
 
-## Login or API key isn't working
+1. **A previous copy may still be running.** Open Task Manager, end any `meterless-relay.exe` process, and try again.
+2. **Your data may be damaged.** Close Relay and rename `%APPDATA%\com.meterless.relay` to something else, such as `com.meterless.relay.old`. Reopen Relay. If it starts fresh, the problem was in that folder. You can bring your work back with **Settings → Data & Alerts → Restore from backup**, using an exported backup.
+3. **WebView2 may be missing.** Relay's window uses Microsoft Edge WebView2, which comes with Windows 11 and current Windows 10. If it's been removed, install the Evergreen WebView2 Runtime from Microsoft.
+4. **Reinstall.** Uninstall Relay and install it again from [the installer](https://meterless.ai/Installers/meterless-relay-latest.exe).
 
-Open **Settings → Models**. Confirm the key is pasted with no extra spaces at the start or end. Click **Test connection**.
+### The intro animation is in the way
 
-Common causes when the test fails:
+Click anywhere, or click **Skip intro**. It also goes away by itself after a few seconds.
 
-- The key has regional restrictions that don't match where your machine is. Gemini in particular has some regional gates on the free tier.
-- The key has run out of credits or hit a rate limit. Check the provider's console.
-- There's a corporate firewall or VPN sitting between Relay and the model provider's servers. Try turning the VPN off briefly to confirm.
+---
 
-If the key tests fine in Relay but missions still fail with an auth error mid-run, force-close Relay and reopen it. The settings sometimes cache the previous key for a few minutes.
+## Models and keys
 
-## The model isn't loading
+### A key says "Invalid" or a model won't answer
 
-This usually means one of three things:
+1. Open **Settings → API Keys** and click **Verify** next to the key. Check that you didn't paste extra spaces. Relay trims them, but copying out of a password manager can still pick up the wrong text.
+2. Click **Save Settings**. Edits on the API Keys and Model Routing tabs don't take effect until you save.
+3. Check the provider's own console. Common causes are no credit left, a rate limit, a model your plan doesn't include, or a regional restriction.
+4. A VPN or corporate proxy can block provider traffic. Turn the VPN off briefly to test.
+5. If one provider is down, pick a model from another provider under **Settings → Model Routing**. The picker at the top of the right sidebar also switches models for a while without changing your settings.
 
-1. The model name in your settings has been deprecated by the provider. Open **Settings → Models** and pick a current model from the dropdown.
-2. Your account doesn't have access to that specific model. Some providers gate larger models behind paid tiers.
-3. The provider is having an outage. Check their status page. Relay can't fix their downtime, but you can switch to a different provider in the meantime under **Model routing**.
+### "Research call failed" (continuing with goal + desktop only)
 
-## A mission fails because Relay can't find a window
+The research step before planning couldn't run. The plan still compiles from your goal and desktop alone. Usually the Deep Reasoning model is unavailable, or doesn't support search. Pick a different one under **Model Routing**.
 
-This almost always means a tracked window got closed, or was never tracked in the first place. Open the **Tracked Windows** panel on the left and confirm the window you expected Relay to use is in the list and still has a thumbnail.
+### Meterless Runtime shows "offline" or "secret rejected"
 
-If the underlying app got restarted, click the refresh icon next to the tracked window. Relay will reattach to the new instance.
+- **Offline.** Under **Settings → API Keys → Meterless Runtime**, click **Auto Detect** to try the usual local ports (8088, 8787 and 11434), or enter the base URL by hand and click **Recheck**.
+- **Secret rejected.** Your runtime needs a secret key. Paste it into **Runtime secret key** and click **Verify**. Newer runtimes issue the key under Meterless › Setup › Connected apps.
 
-If you wrote a goal that mentions an app by name but never tracked it, Relay will tell you in the plan inspector. Track the window and run the plan again.
+### An OpenAI-compatible server isn't working
 
-## Multi-monitor clicks land in the wrong place
+Click **Discover models**. What it shows tells you the problem:
 
-If you're on Windows and your secondary monitor is set to a different DPI scaling than your primary, clicks can land slightly off. The fix:
+| You see | It means |
+|---|---|
+| **Unreachable** | The base URL is wrong, or the server isn't running |
+| **Key rejected** | The key is wrong |
+| **HTTP …** | The server answered, but not as an OpenAI-compatible `/models` endpoint |
 
-1. Right-click the desktop and pick **Display settings**.
-2. Set both monitors to the same scaling (usually 100% or 125%).
-3. Sign out and back in. Windows requires this for the scaling change to apply everywhere.
+Base URLs usually end in `/v1`, for example `http://192.168.0.10:8000/v1`. If discovery isn't supported, type the model ID exactly as the server spells it and click **Add**.
 
-This is a Windows quirk, not something Relay does wrong, but it can be fixed.
+### A local WebGPU model refuses a task
 
-## Vision verification keeps failing on a step that actually worked
+That's on purpose. Local models only handle short text tasks. Relay refuses to send them vision steps, web search, full plan compiles or very long inputs, because the result would quietly be worse. For those jobs, use a hosted model, a Meterless Runtime or your own server.
 
-The vision check is comparing the live screen to what the planner expected. If the expectation was too strict (it was looking for a specific text label that's now slightly different), the check fails even though the workflow is fine.
+If you see "Local models need WebGPU", your graphics setup doesn't offer WebGPU to Relay.
 
-Two ways to handle it:
+---
 
-- Loosen the check. Open the plan, find the step, change the verification from **Strict** to **Loose**. Loose just checks that the right window is in focus and roughly the right area of the screen looks plausible.
-- Turn the check off for that step. Right-click and pick **Skip verification**. Use this if you've watched the step succeed several times and you're sure of it.
+## Windows and runs
 
-## Relay crashes after a Windows update
+### The plan targets the wrong window, or says it can't find one
 
-Windows updates occasionally change which APIs are available, and Relay sometimes needs an update to keep up. Check the **Releases** page for a new version. If there isn't one, file a bug report including the version of Windows you updated to, and we'll get a patch out.
+- Check **Desktop Control → Active Sessions**. The window you meant should be listed there. If it isn't, find it under **Available Windows**, click it, and click **Track (N)**. If the list looks stale, click **OS** to refresh it, and switch to **All OS** to see every window.
+- Minimized windows may not show up. Restore them first.
+- In the plan panel, an amber **Fix windows** button means a step refers to a window you aren't tracking. Click it to map the step to an open window.
+- Remember which tab you're on. The **My Desktop** / **Private Workspace** switch decides where new missions run. A mission compiled for a workspace runs there, not on your desktop, until you compile it again from My Desktop.
 
-In the meantime, the previous build of Relay is still installed under the **Programs and Features** uninstaller list with the option to roll back.
+### A click lands in the wrong place, or "element not found"
 
-## Settings reset after an update
+Relay clicks controls by their accessible name. Some apps don't expose names, mostly canvas apps, games and heavily customized interfaces. For those:
 
-Settings live in `%APPDATA%\Meterless Relay\` *(confirm before publishing)*. If they got wiped, it usually means the update migrated to a new format and your previous settings didn't make it across.
+- Turn on **Settings → Model Routing → Automation tiers → Vision click fallback**, and give the window a **Mirror** from its Active Sessions card. Relay will find the control in a screenshot instead. This uses vision tokens.
+- Or edit the step to use different target text that matches what's on screen.
 
-Restore from the auto-backup:
+### Typing went to the wrong window
 
-1. Close Relay.
-2. Go to `%APPDATA%\Meterless Relay\backup\`.
-3. Find the most recent dated folder.
-4. Copy `settings.json` from that folder back into the parent directory.
-5. Reopen Relay.
+Windows sometimes refuses to bring a window to the front, for example while another app is grabbing focus or a system dialog is open. Close whatever is holding focus, click **Focus** on the session card, and then click **Retry step**. Builds after 0.8.8 stop the step with an error when this happens, instead of typing into whatever window has focus.
 
-We auto-back-up settings on every update. The backups are kept for thirty days.
+### A dialog popped up and the run paused
 
-## The app won't open at all
+When Relay sees **A dialog is in the way**, it found a dialog it couldn't settle safely. Deal with the dialog yourself, then click **Retry step**. You can also skip the step or phase, or cancel the run.
 
-In order from most-likely to least-likely:
+To change how Relay handles dialogs, go to **Settings → Model Routing → Automation tiers → Modal dialog handling**:
 
-1. **A previous instance is still running.** Open Task Manager, look for `meterless-relay.exe`, end it, and try again.
-2. **The local data folder got corrupted.** Move `%APPDATA%\Meterless Relay\` to your desktop (don't delete it, in case you want to restore it). Reopen Relay. It'll start fresh. If it now opens, your old folder had something bad in it and you can copy your `keys.json` back if you want to keep your API keys.
-3. **A Windows visual C++ runtime is missing.** Install the latest Visual C++ Redistributable from Microsoft. Relay depends on it and most machines already have it, but a fresh Windows install sometimes doesn't.
-4. **The install is genuinely broken.** Uninstall and reinstall. Your data folder survives uninstall, so you don't lose anything.
+- **Automatic** handles safe dialogs and pauses on risky ones.
+- **Ask me** always pauses.
+- **Off** fails the step instead.
 
-If none of that works, file a bug report. Include what happens when you try to launch (does anything appear in the system tray? does the process briefly show in Task Manager and then die?), and we'll dig in.
+### A step "worked" but shows fail or inconclusive
+
+- **Inconclusive** means Relay couldn't check the step. That's common in apps with poor accessibility support. It's reported honestly instead of being counted as a pass.
+- **Fail** means the check ran and the screen didn't match what the plan expected. Click the step in **Run results** to see what was checked. If the expected result is wrong, edit that step's check.
+- In the default **Shadow** mode, failed checks never stop a run. If you switched to **Enforce** and it's too strict for a workflow, switch back under **Settings → Model Routing → Runtime verification**.
+
+### The run is just sitting there
+
+Look for the countdown in the plan panel. It means the run is waiting for the screen to change, or on a pause the plan asked for. Click **Continue now** to move on. **Stop** ends the run straight away, even in the middle of a wait.
+
+### A scheduled mission didn't run
+
+- **Was Relay open?** Schedules only run while Relay is open. What happens to a run missed while it was closed depends on the schedule's **If a run is missed** setting.
+- **Is it waiting for windows?** A **Waiting for window** badge means a required window isn't open. Click **Fix windows**.
+- **Was it auto-paused?** An **auto-paused** badge means it hit its failure limit. Fix the cause, then tick it back on. That resets the count.
+- **Was Relay busy?** If **Skip if busy** is on, a run that came due while another mission was running was skipped.
+
+Check **Insights → Alerts** for the reason.
+
+---
+
+## Private Workspaces
+
+### "Debug port did not open", or the workspace won't start
+
+Relay tries to fix this by itself, by taking over or closing a leftover browser and moving to a free port. If it still fails, close every window of that browser and click **Start** again. Make sure a Chromium browser (Chrome, Edge, Brave and so on) is installed. The create form lists the ones it found.
+
+### The workspace says "Not responding"
+
+Click **Repair**. Relay reconnects to the open pages, opens a new page, or relaunches the browser, whichever is needed. During a run it does this by itself, up to 3 times per mission.
+
+---
+
+## Data, backups and updates
+
+### I want to undo a bad import, or get my old setup back
+
+Go to **Settings → Data & Alerts → Automatic backups**. Pick a snapshot and click **Restore**. Restoring merges the snapshot into what you have, with newer items winning by ID. The world model is replaced completely. **Back up now** takes a snapshot right away.
+
+### Moving to a new PC
+
+1. On the old PC, click **Export workspace** under Settings → Data & Alerts. To bring your model routing and verification settings along, tick **Include preferences**.
+2. On the new PC, click **Restore from backup**.
+
+API keys are never included, so paste them again on the new PC.
+
+### "Couldn't reach meterless.ai" when checking for updates
+
+Check your connection or proxy, then click **Retry**. If **Update now** fails, nothing was installed. Use **Download installer instead** (or **Download Installer**) and run it by hand.
+
+---
+
+## Agent Bridge
+
+| Problem | Fix |
+|---|---|
+| `relay doctor` shows ✗ on the discovery file or the bridge | Turn on **Settings → Agent Bridge → Enable Agent Bridge**. Relay has to be running. |
+| `tier_insufficient` | Raise the agent's tier in Settings → Agent Bridge → **Agents**, or run `relay hello --tier act` |
+| Calls hang for about 2 minutes, then return `approval_timeout` | An approval dialog is waiting in the Relay window |
+| `auth_failed` | The bridge restarted and the token changed. Run the command again. |
+
+There's more in [agent-bridge.md](agent-bridge.md).
 
 ---
 
 ## Still stuck?
 
-Email us at **<support@meterless.ai>**. Tell us your Windows version, your Relay version (under **Settings → About**), and what you were trying to do when it went wrong. Logs live in `%APPDATA%\Meterless Relay\logs\` and attaching the most recent one helps a lot.
+Write to **support@meterless.ai**. Include:
+
+- your Windows version
+- your Relay version, from **Settings → Data & Alerts → App updates**
+- what you were trying to do
+- the relevant lines from **Settings → System Logs → Copy all**
+
+If the problem happened during a run, an export from **Run results → Export run report** helps a lot.

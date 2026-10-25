@@ -1,65 +1,113 @@
 # Keyboard shortcuts
 
-The handful of shortcuts that actually make a difference, listed in roughly the order you'll want to learn them. All of these are configurable in **Settings → Keybindings** if any of them clash with something else you use.
+Relay is mostly a point-and-click app, but there are a few keys worth knowing. This page lists every shortcut the app actually handles, and where each one works.
 
-## The two you'll use every day
+Some things to know up front:
 
-**Ctrl+Enter** — Run the plan that's currently in the inspector. Same as clicking the **Run** button, but you don't have to take your hands off the keyboard.
+- **There are no global hotkeys.** Every shortcut below works only while the Relay window has focus. None of them reach Relay from another app.
+- **Shortcuts can't be remapped.** There's no keybindings screen.
+- **There's no stop key.** To stop a run, use **Stop** in the Compiled Mission Plan panel, or **STOP ALL** at the top of the Desktop Control panel.
 
-**Ctrl+Shift+Esc** — Global emergency pause. *(confirm before publishing)* This works even if Relay isn't the focused window. If a mission is running and you need it to stop right now, this is the one. It pauses cleanly between steps rather than killing the process, so the next time you hit Continue it picks up where it left off.
+## Anywhere in the app
 
-## In the goal box
+| Keys | What it does |
+|---|---|
+| **Ctrl+K** | Opens or closes the command palette. It works even while you're typing in a text box. |
 
-**Up arrow** (with an empty composer) — Scroll back through the last 100 things you asked Relay to do. Press it again to keep going further back.
+### Inside the command palette
 
-**Down arrow** — Come back toward the present. Eventually you're back to a blank composer.
+| Keys | What it does |
+|---|---|
+| **↑ / ↓** | Move through the results |
+| **Enter** | Run the selected command |
+| **Esc** | Close the palette. Clicking outside it also works. |
 
-**Ctrl+L** — Clear the composer. Faster than selecting and deleting.
+From the palette you can:
 
-**Ctrl+R** — Pull up the last successful plan and rerun it without retyping the goal. Useful for "do the thing I just did, again."
+- jump to any tab: Define, Schedule, History, Macros, Skills or Insights
+- open Settings, the World Model library or Tailor
+- run or queue a recent mission, a macro or a skill
+- run a schedule right now, run the mission queue, or run a routine
+- switch new missions between My Desktop and a Private Workspace, and start or stop a workspace
+- use any Tailor action, including walking a ready mission candidate
 
-**Shift+Enter** — New line inside a goal. Plain Enter sends. We're aware some apps do this the other way around.
+## The goal box (Define tab → Prompt)
 
-## Tracking and inspecting windows
+| Keys | What it does |
+|---|---|
+| **Enter** | Compile the mission. This does the same thing as **Compile Mission**. |
+| **Shift+Enter** | Start a new line in your goal |
+| **Ctrl+↑** | Bring back an older goal from your history |
+| **Ctrl+↓** | Move toward newer goals. Going past the newest brings back the draft you were writing. |
+| **Esc** | Stop dictation (only while **Speak** is listening) |
 
-**Ctrl+T** — Open the "track a new window" picker. The list is sorted by most-recently-focused, so the window you just had open is at the top.
+The hint above the goal box shows these, plus how many goals you've saved.
 
-**Ctrl+1 through Ctrl+8** — Jump to tracked window 1 through 8. The preview in Relay scrolls to it and the underlying native window comes to the front.
+## Live mode command box (Define tab → Live)
 
-**Ctrl+Shift+1 through Ctrl+Shift+8** — Take a fresh screenshot of that tracked window without running anything. Useful for confirming what Relay sees right now.
+| Keys | What it does |
+|---|---|
+| **Enter** | Send the command |
+| **Shift+Enter** | New line |
+| **Ctrl+↑ / Ctrl+↓** | Older and newer commands from your history |
+| **↑** with the cursor at the very start, **↓** with it at the very end | Also step through history |
+| **Esc** | Stop dictation while it's listening |
+| **Enter** in the "Label this target…" box | Save the label for a point or region you just picked |
 
-**Ctrl+Backspace** (with a tracked window selected) — Stop tracking it. Doesn't close the underlying app.
+## Compiled Mission Plan panel
 
-## During a run
+### Refining part of a plan
 
-**Space** — Pause the current mission. Press again to resume. This is the polite version of Ctrl+Shift+Esc. Use it when you have time to wait for the current step to finish.
+Click **Refine** to turn on selection mode, then:
 
-**Ctrl+→** — When the run is paused at an approval gate, this is "continue." Same as clicking the Continue button.
+| Keys or mouse | What it does |
+|---|---|
+| Click or drag across phases and steps | Highlight them |
+| **Ctrl+click** | Add or remove a single item |
+| **Enter** | Open the refine dialog for what you highlighted |
+| **Esc** | Clear the highlight. Press it again with nothing selected to leave selection mode. |
 
-**Ctrl+←** — When paused at an approval gate, this is "cancel the rest of the mission." The work done so far is saved. Nothing further runs.
+These keys don't fire while your cursor is in a text field.
 
-**Ctrl+S** (during a run) — Snapshot the current desktop state. Saves a record of every tracked window's current contents to your workspace. Good for "I want to come back to this exact moment later."
+### Refine dialog and result windows
 
-## Moving around the app
+| Keys | What it does |
+|---|---|
+| **Ctrl+Enter** | Run the refine (in the refine dialog), or apply the result (in the refine or Enhance result window) |
+| **Esc** | Close the dialog, or throw away the result |
 
-**Ctrl+1 through Ctrl+4** (with Alt held, so **Ctrl+Alt+1** etc.) — Switch between the main tabs: Workflow, Workspace, History, Settings.
+### Editing a step
 
-**Ctrl+F** — Search inside the current tab. In Workspace, it searches captured artifacts. In History, it searches past goals and plans.
+| Where | Keys | What it does |
+|---|---|---|
+| A short value field | **Enter** / **Esc** | Save / cancel. Clicking away also saves. |
+| A long value field | **Ctrl+Enter** / **Esc** | Save / cancel. Plain Enter adds a new line. |
+| The raw step JSON editor | **Ctrl+Enter** / **Esc** | Apply (only if the JSON is valid) / cancel |
+| The raw step JSON editor | **Tab** | Insert two spaces, instead of moving to the next field |
+| An action or variable picker | **Enter** / **Esc** | Pick the first match or the value you typed / close the picker |
+| A selected parameter chip | **Enter** | Open its editor |
 
-**Ctrl+,** — Open Settings. Standard Windows convention.
+### While a run is going
 
-**Ctrl+Q** — Quit Relay. Will ask first if a mission is mid-run.
+The plan scrolls along with whichever step is running. Pressing **↑, ↓, Page Up, Page Down, Home, End** or **Space** inside the plan stops that auto-scrolling, so you can read in peace. The keys don't do anything else.
 
-## Power-user moves
+## Smaller places
 
-**Hold Shift while clicking Run** — Run the current plan in dry-run mode. Relay walks through every step and tells you what it would have done, without actually clicking or typing anything. Best way to inspect a complicated plan you don't fully trust yet.
+| Where | Keys | What it does |
+|---|---|---|
+| Model pickers (Settings → Model Routing, and the routing override at the top of the right sidebar) | **Esc** | Close the dropdown |
+| Private Workspace → **New Private Workspace** name box | **Enter** / **Esc** | Create / cancel |
+| Settings → API Keys → Meterless Runtime connect-link box | **Enter** | Connect |
+| Settings → API Keys → OpenAI-compatible endpoint model ID box | **Enter** | Add the model |
+| Tailor → Tell | **Ctrl+Enter** | Add what you wrote and keep the panel open |
+| Tailor → tour note box | **Enter** | Add the note |
+| Tailor walkthrough, editing a step | **Enter** / **Esc** | Save / cancel |
+| Guidance tips (the welcome card and the coachmarks) | **Esc** | Dismiss |
 
-**Hold Ctrl while clicking a past plan in the History tab** — Fork it. Opens a new editable copy of the plan so you can change a step or two before running, instead of running it as-is.
+## The intro animation
 
-**Double-click a tracked window's thumbnail** — Pop it out into its own resizable preview window. Useful on a multi-monitor setup where you want to watch what's happening on your second screen.
+The intro skips itself after a few seconds. To skip it sooner, click anywhere or press **Skip intro**. **Esc**, **Enter** and **Space** also skip it, but only once the intro has keyboard focus, so clicking is the reliable way.
 
-**Right-click a step in the plan inspector** — Mark it as an approval gate, or change its failure policy (continue, retry, halt). You don't have to memorize this; the menu is self-explanatory once you open it.
+## Not supported
 
----
-
-If you change any of these in **Settings → Keybindings** and then want to get back to the defaults, there's a **Restore defaults** button at the bottom of that page that does exactly what it says.
+Some windows don't close with **Esc**, including Settings, the Macro library and the World Model library. Use their **X** button.
